@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+<body>
+    <h1>
+        10. Crie uma página em HTML5 na qual a pessoa possa digitar seu peso e sua altura e um programa PHP
+        para o cálculo do IMC da pessoa. Defina se a pessoa está acima ou abaixo do peso. Procure referências
+        sobre este índice (o que é considerado normal, abaixo ou acima do peso). Inclua a referência (página
+        de acesso) para que a pessoa leia sobre este assunto.
+    </h1>
+    <form action="/exer10/resposta" method="post">
+        <label for="peso">Peso (em kg):</label>
+        <input type="number" id="peso" name="peso" step="0.01" required>
+        <br>
+        <label for="altura">Altura (em metros):</label>
+        <input type="number" id="altura" name="altura" step="0.01" required>
+        <br>
+        <button type="submit">Calcular IMC</button>
+    </form>
+    <p>Leia mais sobre o Índice de Massa Corporal (IMC) no botão abaixo.</p>
+    <p>Lembre-se que esse índice apenas serve para alertar: caso você esteja acima do peso ideal, é importante que tenha um maior cuidado com a sua saúde, pois os riscos de doenças cardiovasculares e de diabetes, por exemplo, são maiores em pessoas localizadas nas faixas do sobrepeso e posteriores"</a></p>
+    <a href="https://brasilescola.uol.com.br/educacao-fisica/Indice-massa-corporal-imc.htm" target="_blank"><button>Clique aqui para ver sobre</button></a>
+    </form>
+</body>
+</html>
