@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__."/vendor/autoload.php";
+require __DIR__ . "/vendor/autoload.php";
 
 $metodo = $_SERVER['REQUEST_METHOD'];
 $caminho = $_SERVER['PATH_INFO'] ?? '/';
@@ -8,6 +8,29 @@ $caminho = $_SERVER['PATH_INFO'] ?? '/';
 $r = new Php\Primeiroprojeto\Router($metodo, $caminho);
 
 #ROTAS
+
+$r->get('/olamundo', function () {
+    return "Olá mundo!";
+});
+
+$r->get('/olapessoa/{nome}', function ($params) {
+    return 'Olá ' . $params[1];
+});
+
+$r->get('/exer1/formulario', function () {
+    include ("exer1.html");
+});
+
+$r->post('/exer1/resposta', function () {
+    $valor1 = $_POST['valor1'];
+    $valor2 = $_POST['valor2'];
+    $soma = $valor1 + $valor2;
+    return "a soma é :" . $soma;
+});
+
+# Lista 
+
+/*
 
 # Exercicio 1
 $r->get('/exer1/formulario', function(){
@@ -156,17 +179,60 @@ $r->post('/exer10/resposta', function($params){
     return "Seu IMC é: " . number_format($imc, 2) . ". Você está classificado como: $resultado";
 });
 
+*/
+
+//Chamando o formulário para inserir categoria
+$r->get('/categoria/inserir',
+    'Php\Primeiroprojeto\Controllers\CategoriaController@inserir');
+
+$r->post('/categoria/novo',
+    'Php\Primeiroprojeto\Controllers\CategoriaController@novo');
+    
+//Chamando o formulário para inserir Alunos
+$r->get('/alunos/inserir',
+    'Php\Primeiroprojeto\Controllers\AlunosController@inserir');
+
+$r->post('/alunos/novo',
+    'Php\Primeiroprojeto\Controllers\AlunosController@novo');
+
+//Chamando o formulário para inserir Cursos
+$r->get('/curso/inserir',
+    'Php\Primeiroprojeto\Controllers\CursoController@inserir');
+
+$r->post('/curso/novo',
+    'Php\Primeiroprojeto\Controllers\CursoController@novo');
+
+//Chamando o formulário para inserir Funcionarios
+$r->get('/funcionarios/inserir',
+    'Php\Primeiroprojeto\Controllers\FuncionariosController@inserir');
+
+$r->post('/funcionarios/novo',
+    'Php\Primeiroprojeto\Controllers\FuncionariosController@novo');
+
+//Chamando o formulário para inserir Professores
+$r->get('/professores/inserir',
+    'Php\Primeiroprojeto\Controllers\ProfessorController@inserir');
+
+$r->post('/professores/novo',
+    'Php\Primeiroprojeto\Controllers\ProfessorController@novo');
 
 #ROTAS
 
 $resultado = $r->handler();
-
+ 
 if(!$resultado){
     http_response_code(404);
     echo "Página não encontrada!";
     die();
 }
-
-echo $resultado($r->getParams());
+ 
+if ($resultado instanceof Closure){
+    echo $resultado($r->getParams());
+} elseif (is_string($resultado)){
+    $resultado = explode("@", $resultado);
+    $controller = new $resultado[0];
+    $resultado = $resultado[1];
+    echo $controller->$resultado($r->getParams());
+}
 
 
