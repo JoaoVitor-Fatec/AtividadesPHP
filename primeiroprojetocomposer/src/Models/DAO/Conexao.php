@@ -10,7 +10,7 @@ class Conexao{
 
     public function __construct(){
         $this->conexao = 
-            new PDO("mysql:host=localhost; dbname=banco", "root", "");
+            new PDO("mysql:host=localhost; dbname=mydb", "root", "");
     }
 
     public function getConexao(){
