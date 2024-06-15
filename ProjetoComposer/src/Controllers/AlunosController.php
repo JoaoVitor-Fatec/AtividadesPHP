@@ -7,6 +7,7 @@ use Php\Primeiroprojeto\Models\Domain\Alunos;
 
 class AlunosController {
 
+    //alerts das funções
     public function index($params){
         $alunosDAO = new AlunosDAO();
         $resultado = $alunosDAO->consultarTodos();
@@ -29,6 +30,7 @@ class AlunosController {
         require_once("../src/Views/alunos/alunos.php");
     }
     
+    //diretorio de inserir
     public function inserir($params){
         require_once("../src/Views/alunos/inserir_alunos.html");
     }
@@ -43,18 +45,21 @@ class AlunosController {
         }
     }
 
+    //diretorio de alterar
     public function alterar($params){
         $alunosDAO = new AlunosDAO();
         $resultado = $alunosDAO->consultar($params[1]);
         require_once("../src/Views/alunos/alterar_alunos.php");
     }
 
+    //diretorio de excluir
     public function excluir($params){
         $alunosDAO = new AlunosDAO();
         $resultado = $alunosDAO->consultar($params[1]);
         require_once("../src/Views/alunos/excluir_alunos.php");
     }
 
+    //diretorio de alterar
     public function editar($params){
         $alunos = new Alunos($_POST['id'], $_POST['nome'], $_POST['ra']);
         $alunosDAO = new AlunosDAO();

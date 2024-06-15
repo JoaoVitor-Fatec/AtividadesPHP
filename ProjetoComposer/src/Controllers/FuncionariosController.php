@@ -29,6 +29,7 @@ class FuncionariosController {
         require_once("../src/Views/funcionarios/funcionarios.php");
     }
     
+    //diretorio de inserir
     public function inserir($params){
         require_once("../src/Views/funcionarios/inserir_funcionarios.html");
     }
@@ -43,18 +44,21 @@ class FuncionariosController {
         }
     }
 
+    //diretorio de alterar
     public function alterar($params){
         $funcionarioDAO = new FuncionariosDAO();
         $resultado = $funcionarioDAO->consultar($params[1]);
         require_once("../src/Views/funcionarios/alterar_funcionarios.php");
     }
 
+    //diretorio de excluir
     public function excluir($params){
         $funcionarioDAO = new FuncionariosDAO();
         $resultado = $funcionarioDAO->consultar($params[1]);
         require_once("../src/Views/funcionarios/excluir_funcionarios.php");
     }
 
+    //diretorio de editar
     public function editar($params){
         $funcionario = new Funcionarios($_POST['id'], $_POST['nome'], $_POST['cpf']);
         $funcionarioDAO = new FuncionariosDAO();
@@ -65,6 +69,7 @@ class FuncionariosController {
         }
     }
 
+    //diretorio de deletar
     public function deletar($params){
         $funcionarioDAO = new FuncionariosDAO();
         if ($funcionarioDAO->excluir($_POST['id'])){

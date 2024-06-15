@@ -10,15 +10,6 @@ $r->get('/olamundo', function () {
 $r->get('/olapessoa/{nome}', function ($params) {
     return 'Olá ' . $params[1];
 });
-$r->get('/exer1/formulario', function () {
-    include ("exer1.html");
-});
-$r->post('/exer1/resposta', function () {
-    $valor1 = $_POST['valor1'];
-    $valor2 = $_POST['valor2'];
-    $soma = $valor1 + $valor2;
-    return "a soma é :" . $soma;
-});
 
 /*
 
@@ -182,7 +173,7 @@ $r->post('/ex10/resposta', function () {
 });
 
 */
-//Chamando o formulário para inserir categoria
+//Diretórios de categoria
 $r->get('/categoria/inserir',
     'Php\Primeiroprojeto\Controllers\CategoriaController@inserir');
 
@@ -207,7 +198,7 @@ $r->post('/categoria/editar',
 $r->post('/categoria/deletar',
     'Php\Primeiroprojeto\Controllers\CategoriaController@deletar');
     
-//Chamando o formulário para inserir Alunos
+//Diretórios de Alunos
 $r->get('/alunos/inserir',
     'Php\Primeiroprojeto\Controllers\AlunosController@inserir');
 $r->post('/alunos/novo',
@@ -231,7 +222,7 @@ $r->post('/alunos/editar',
 $r->post('/alunos/deletar',
     'Php\Primeiroprojeto\Controllers\AlunosController@deletar');
 
-//Chamando o formulário para inserir Cursos
+//Diretórios de Curso
 $r->get('/curso/inserir',
     'Php\Primeiroprojeto\Controllers\CursoController@inserir');
 $r->post('/curso/novo',
@@ -256,7 +247,7 @@ $r->post('/curso/deletar',
     'Php\Primeiroprojeto\Controllers\CursoController@deletar');
 
 
-//Chamando o formulário para inserir Funcionarios
+//Diretórios de Funcionario
 $r->get('/funcionarios/inserir',
     'Php\Primeiroprojeto\Controllers\FuncionariosController@inserir');
 
@@ -281,7 +272,7 @@ $r->post('/funcionarios/editar',
 $r->post('/funcionarios/deletar',
     'Php\Primeiroprojeto\Controllers\FuncionariosController@deletar');
 
-//Chamando o formulário para inserir Professores
+//Diretório de Professores
 $r->get('/professores/inserir',
     'Php\Primeiroprojeto\Controllers\ProfessorController@inserir');
 

@@ -7,6 +7,7 @@ use Php\Primeiroprojeto\Models\Domain\Categoria;
 
 class CategoriaController{
 
+    //alerts das funções
     public function index($params){
         $categoriaDAO = new CategoriaDAO();
         $resultado = $categoriaDAO->consultarTodos();
@@ -29,10 +30,11 @@ class CategoriaController{
         require_once("../src/Views/categoria/categoria.php");
     }
     
+    //diretorio de inserir
     public function inserir($params){
         require_once("../src/Views/categoria/inserir_categoria.html");
     }
-
+    
     public function novo($params){
         $categoria = new Categoria(0, $_POST['descricao']);
         $categoriaDAO = new CategoriaDAO();
@@ -43,18 +45,21 @@ class CategoriaController{
         }
     }
 
+    //diretorio de alterar
     public function alterar($params){
         $categoriaDAO = new CategoriaDAO();
         $resultado = $categoriaDAO->consultar($params[1]);
         require_once("../src/Views/categoria/alterar_categoria.php");
     }
 
+    //diretorio de excluir
     public function excluir($params){
         $categoriaDAO = new CategoriaDAO();
         $resultado = $categoriaDAO->consultar($params[1]);
         require_once("../src/Views/categoria/excluir_categoria.php");
     }
 
+    //diretorio de editar
     public function editar($params){
         $categoria = new Categoria($_POST['id'], $_POST['descricao']);
         $categoriaDAO = new CategoriaDAO();

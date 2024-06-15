@@ -29,6 +29,7 @@ class ProfessorController {
         require_once("../src/Views/professores/professores.php");
     }
     
+    //diretorio de inserir
     public function inserir($params){
         require_once("../src/Views/professores/inserir_professor.html");
     }
@@ -43,18 +44,21 @@ class ProfessorController {
         }
     }
 
+    //diretorio de alterar
     public function alterar($params){
         $professorDAO = new ProfessorDAO();
         $resultado = $professorDAO->consultar($params[1]);
         require_once("../src/Views/professores/alterar_professor.php");
     }
 
+    //diretorio de excluir
     public function excluir($params){
         $professorDAO = new ProfessorDAO();
         $resultado = $professorDAO->consultar($params[1]);
         require_once("../src/Views/professores/excluir_professor.php");
     }
 
+    //diretorio de editar
     public function editar($params){
         $professor = new Professor($_POST['id'], $_POST['nome'], $_POST['graduacao']);
         $professorDAO = new ProfessorDAO();
@@ -65,6 +69,7 @@ class ProfessorController {
         }
     }
 
+    //diretorio de deletar
     public function deletar($params){
         $professorDAO = new ProfessorDAO();
         if ($professorDAO->excluir($_POST['id'])){

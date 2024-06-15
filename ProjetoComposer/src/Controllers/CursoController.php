@@ -29,6 +29,7 @@ class CursoController {
         require_once("../src/Views/curso/curso.php");
     }
     
+    //diretorio de inserir
     public function inserir($params){
         require_once("../src/Views/curso/inserir_curso.html");
     }
@@ -43,18 +44,21 @@ class CursoController {
         }
     }
 
+    //diretorio de alterar
     public function alterar($params){
         $cursoDAO = new CursoDAO();
         $resultado = $cursoDAO->consultar($params[1]);
         require_once("../src/Views/curso/alterar_curso.php");
     }
 
+    //diretorio de excluir
     public function excluir($params){
         $cursoDAO = new CursoDAO();
         $resultado = $cursoDAO->consultar($params[1]);
         require_once("../src/Views/curso/excluir_curso.php");
     }
 
+    //diretorio de editar
     public function editar($params){
         $curso = new Curso($_POST['id'], $_POST['nome'], $_POST['duracao']);
         $cursoDAO = new CursoDAO();
@@ -65,6 +69,7 @@ class CursoController {
         }
     }
 
+    //diretorio de deletar
     public function deletar($params){
         $cursoDAO = new CursoDAO();
         if ($cursoDAO->excluir($_POST['id'])){
